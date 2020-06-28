@@ -33,4 +33,16 @@ export const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
     word-break: break-word;
   }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: inherit;
+    font-weight: 400;
+    line-height: 1.1;
+    text-rendering: optimizeLegibility;
+  }
 `;
