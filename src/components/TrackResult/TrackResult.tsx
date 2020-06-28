@@ -1,8 +1,8 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Card, Avatar } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
 
-import { CardContainer } from './styles';
 import './TrackResult.less';
 
 const { Meta } = Card;
@@ -15,7 +15,7 @@ interface ResultProps {
 }
 
 export const TrackResult: React.SFC<ResultProps> = (props): JSX.Element => (
-  <CardContainer to={`/track/${props.trackId}`}>
+  <Link to={`/track/${props.trackId}`}>
     <Card
       size={'default'}
       hoverable={true}
@@ -29,5 +29,5 @@ export const TrackResult: React.SFC<ResultProps> = (props): JSX.Element => (
     >
       <Meta title={props.artistName} description={props.trackName} />
     </Card>
-  </CardContainer>
+  </Link>
 );

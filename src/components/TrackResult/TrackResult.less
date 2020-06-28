@@ -7,6 +7,11 @@
 .ant-card-cover {
   width: 14rem;
   min-width: 14rem;
+
+  @media screen and (max-width: 42em) {
+    width: 8rem;
+    min-width: 8rem;
+  }
 }
 
 .ant-card-body {
@@ -17,8 +22,16 @@
 .ant-card-meta-title {
   font-weight: 500 !important;
   font-size: 22px !important;
+
+  @media screen and (max-width: 42em) {
+    font-size: 18px !important;
+  }
 }
 
 .ant-card-meta-description {
   font-size: 18px !important;
+
+  @media screen and (max-width: 42em) {
+    font-size: 14px !important;
+  }
 }

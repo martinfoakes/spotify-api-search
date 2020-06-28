@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card } from 'antd';
 
-import { SongTitle, ArtistName, AlbumName } from './styles';
+import { SongTitle, ArtistName, AlbumName, AudioControls } from './styles';
 
 interface CardProps {
   trackData: {
@@ -79,9 +79,9 @@ export const DetailsCard: React.SFC<CardProps> = ({
           </a>
         </ArtistName>
         <p>{formatDuration(trackData.duration_ms)}</p>
-        <audio className="audio-element" controls={true}>
+        <AudioControls controls={true}>
           <source src={trackData.preview_url} />
-        </audio>
+        </AudioControls>
       </Card>
     </>
   );

@@ -1,4 +1,5 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+import { largeTablet } from '../../helper/constants/mediaRules';
 
 interface ContainerProps {
   readonly showTracks: boolean;
@@ -24,9 +25,14 @@ export const SearchBarContainer = styled.div`
 export const TrackList = styled.ul`
   list-style: none;
   padding-inline-start: 0px;
-  width: 80%;
-  max-width: 60rem;
-  margin: 3rem auto 0;
+  width: 100%;
+  max-width: 42rem;
+  margin: 3rem 0;
+
+  ${largeTablet(css`
+    width: 80%;
+    margin: 3rem auto 0;
+  `)}
 `;
 
 export const TrackElement = styled.li`
