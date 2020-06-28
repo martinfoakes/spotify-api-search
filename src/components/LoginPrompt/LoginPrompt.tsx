@@ -2,7 +2,7 @@ import React from 'react';
 import { Fade } from 'react-awesome-reveal';
 import { Button } from 'antd';
 
-import SpotLogo from '../../img/spot-logo.png';
+import SpotLogo from '../../images/spot-logo.png';
 import { LoginContainer, LoginLink, ButtonImg } from './styles';
 
 interface LoginProps {

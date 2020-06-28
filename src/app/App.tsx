@@ -4,7 +4,7 @@ import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 
 import { SearchBar, TrackDetails } from '../containers/';
 import { Footer, LoginPrompt } from '../components/';
-import GitLogo from '../img/github-logo.png';
+import GitLogo from '../images/github-logo.png';
 import { AppHeader, AppBody } from './styles';
 import './App.less';
 
