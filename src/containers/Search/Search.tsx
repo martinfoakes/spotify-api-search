@@ -1,4 +1,4 @@
-// tslint:disable: jsx-no-lambda, ban-types
+// tslint:disable: jsx-no-lambda ban-types
 import React from 'react';
 import { connect } from 'react-redux';
 import { Input, Spin } from 'antd';

@@ -43,9 +43,9 @@ class App extends React.Component<{}, AppState> {
   handleLogin = (): void => {
     const authSpotifyBase = 'https://accounts.spotify.com/authorize';
     const clientId = '4b001924ecca49f9be8aa35c979548b2';
-    const redirectUrl = 'http://localhost:3000/';
+    const redirectURI = encodeURIComponent(window.location.origin);
 
-    const authUrl = `${authSpotifyBase}?client_id=${clientId}&response_type=token&redirect_uri=${redirectUrl}`;
+    const authUrl = `${authSpotifyBase}?client_id=${clientId}&response_type=token&redirect_uri=${redirectURI}/`;
     this.setState({
       authUrl,
       loginRedirect: true,

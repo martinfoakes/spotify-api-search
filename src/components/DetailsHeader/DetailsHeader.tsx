@@ -1,3 +1,4 @@
+// tslint:disable: jsx-no-lambda
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { PageHeader } from 'antd';
