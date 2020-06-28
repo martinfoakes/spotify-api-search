@@ -20,7 +20,7 @@ export const TrackResult: React.SFC<ResultProps> = (props): JSX.Element => (
       size={'default'}
       hoverable={true}
       cover={
-        props.coverSrc.length ? (
+        !!props.coverSrc.length ? (
           <img alt="example" src={props.coverSrc} />
         ) : (
           <Avatar shape="square" icon={<UserOutlined />} />
