@@ -5,7 +5,8 @@ import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import { SearchBar, TrackDetails } from '../containers/';
 import { Footer, LoginPrompt } from '../components/';
 import GitLogo from '../images/github-logo.png';
-import { AppHeader, AppBody } from './styles';
+import { AppHeader, AppBody, HeaderText } from './styles';
+import { GIT_REPO } from '../helper/constants/constants';
 import './App.less';
 
 interface AppState {
@@ -68,8 +69,8 @@ class App extends React.Component<{}, AppState> {
     return (
       <>
         <AppHeader>
-          {'Frontend Challenge: Spotify Search'}
-          <a href={'https://github.com/martinfoakes/spotify-app-foakes'}>
+          <HeaderText>{'Frontend Challenge: Spotify Search'}</HeaderText>
+          <a href={GIT_REPO}>
             <img src={GitLogo} alt="github logo" />
           </a>
         </AppHeader>
