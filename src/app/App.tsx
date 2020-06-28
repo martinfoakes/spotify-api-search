@@ -2,8 +2,7 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 
-import { SearchBar } from '../containers/Search/Search';
-import { TrackDetails } from '../containers/TrackDetails/TrackDetails';
+import { SearchBar, TrackDetails } from '../containers/';
 import { Footer, LoginPrompt } from '../components/';
 import GitLogo from '../img/github-logo.png';
 import { AppHeader, AppBody } from './styles';
