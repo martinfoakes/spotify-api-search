@@ -52,6 +52,7 @@ Builds the app for production to the `build/` folder.
 
 - This basically means that only when using any of these base URIs, the Spotify redirect back to the search-app will be successful
 - This does cause a breaking error when using the `npm start:remote` command and trying to authenticate on mobile, as the development URI will be set to the _Network Address_ of your local machine, and the Spotify Development dashboard will not be able to have that whitelisted
+- **THE FIX:**: The Spotify auth process can be carried out on `localhost:3000` like normal on your local machine, then once the search-app has redirected back to, seeing the search bar, the address can be changed to your local network version, and then copied along with the `access_token` hash parameters over to a mobile device browser on the same network
 
 <br />
 
