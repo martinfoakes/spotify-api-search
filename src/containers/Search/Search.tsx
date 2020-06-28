@@ -89,7 +89,7 @@ class SearchBarComp extends React.Component<SearchProps, SearchState> {
 
   render() {
     return (
-      <SearchContainer showTracks={this.props.tracks.length}>
+      <SearchContainer showTracks={!!this.props.tracks.length}>
         <SearchTitle>{'Search for a Song'}</SearchTitle>
         <SearchBarContainer>
           <Search

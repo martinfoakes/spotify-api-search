@@ -1,6 +1,10 @@
 import styled from 'styled-components';
 
-export const SearchContainer = styled.div`
+interface ContainerProps {
+  readonly showTracks: boolean;
+}
+
+export const SearchContainer = styled.div<ContainerProps>`
   transition: all 0.3s ease-in;
   margin-top: ${(props) => (props.showTracks ? '2rem' : '10rem')};
   margin-bottom: 6rem;
