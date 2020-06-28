@@ -1,10 +1,11 @@
 import styled from 'styled-components';
+import { MOCKUP_GREEN } from '../helper/constants/styles';
 
 export const AppHeader = styled.header`
   height: 4.6rem;
   display: flex;
   align-items: center;
-  background-color: #99ffcc;
+  background-color: ${MOCKUP_GREEN};
   font-size: 1.5em;
   margin: 0 -2rem;
   padding: 0 2rem;
