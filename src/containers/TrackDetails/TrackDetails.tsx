@@ -33,7 +33,7 @@ export class TrackDetails extends React.Component<
   }
 
   /**
-   * Get API Data Return for Single Track from ID
+   * Get async API Data Return for Single Track from ID
    */
   async fetchTrackData() {
     const authToken =
