@@ -2,8 +2,7 @@
 import React from 'react';
 import axios from 'axios';
 
-import { DetailsHeader } from '../../components/DetailsHeader/DetailsHeader';
-import { DetailsCard } from '../../components/DetailsCard/DetailsCard';
+import { DetailsCard, DetailsHeader } from '../../components/';
 
 interface TrackDetailsProps {
   apiToken: string;
