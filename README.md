@@ -4,8 +4,6 @@ A web application used to query track data from the Spotify API, built with Reac
 
 ## Installation and Setup Instructions
 
-#### Example:
-
 Clone this repository. You will need `node` and `npm` installed globally on your machine.
 
 Installation:
@@ -24,6 +22,10 @@ To Start the development server:
 
 `npm start`
 
+To Start a remote development server for mobile debugging:
+
+`npm start:remote`
+
 To Visit App:
 
 `localhost:3000/`
@@ -36,7 +38,24 @@ Builds the app for production to the `build/` folder.
 
 <br />
 
-## Reflection
+## Spotify API Authentication Process:
+
+- In order to use this search-app, there is a redirect at the start of the service to take the user through the Spotify Login / Authentication process
+- The Redirect URL contains a `redirect_uri` parameter that is used to redirect back to this App once Spotify has been authenticated
+- It is important to note, that the value of this `redirect_uri` parameter is automatically encode based on the current `window.location.origin`
+- Within the _Spotify Developer Dashboard_ for this App, **_there are only a handful of Redirect URIs white-listed for redirect after authorization_**
+- They are:
+
+  - http://localhost:3000 (default address for the `npm start` command)
+  - http://localhost:3001 (secondary address if first port busy)
+  - http://localhost:5000 (for usage of `serve build/` command)
+
+- This basically means that only when using any of these base URIs, the Spotify redirect back to the search-app will be successful
+- This does cause a breaking error when using the `npm start:remote` command, as the development URI will be set to the _Network Address_ of your local machine, and the Spotify Development dashboard will not have that whitelisted
+
+<br />
+
+## Reflection on the App
 
 - What was the context for this project? (ie: was this a side project? was this for Turing? was this for an experiment?)
 - What did you set out to build?
