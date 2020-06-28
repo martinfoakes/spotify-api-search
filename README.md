@@ -56,21 +56,26 @@ Builds the app for production to the `build/` folder.
 
 <br />
 
-## Reflection on the App
+## App Structure:
 
-- What was the context for this project? (ie: was this a side project? was this for Turing? was this for an experiment?)
-- What did you set out to build?
-- Why was this project challenging and therefore a really good learning experience?
-- What were some unexpected obstacles?
-- What tools did you use to implement this project?
-  - This might seem obvious because you are IN this codebase, but to all other humans now is the time to talk about why you chose webpack instead of create react app, or D3, or vanilla JS instead of a framework etc. Brag about your choices and justify them here.
+- The app components are broken down into split `containers`/ presentation `components`
+- The `containers` are stateful, and have access to fetched API data, passing data to stateless functional `components` that handle rendering elements to the DOM
+- Alongside most `container` and `component` files, there are style specific files:
 
-#### Example:
+  - `styles.ts` files: setting up CSS-in-JS styled components, exported into the main `*.tsx` files for use
+  - `*.less` files: handle specifically overriding Ant Design default styles and themes
 
-This was a 3 week long project built during my third module at Turing School of Software and Design. Project goals included using technologies learned up until this point and familiarizing myself with documentation for new features.
+- Using these `*.less` files in this way was a workaround due to time constraints of the project. I felt it would be more beneficial time wise to handle overriding individual elements this way, rather than working through the list of [default less variables](https://github.com/ant-design/ant-design/blob/master/components/style/themes/default.less) and overriding each one within the `craco.config.js` file
+- There is a helper/ directory that contains sets of constants related to functionality / layout / typography / styling etc. that get used throughout the code base. As the size of an App grows a comprehensive set of constant variables can help a lot.
 
-Originally I wanted to build an application that allowed users to pull data from the Twitter API based on what they were interested in, such as 'most tagged users'. I started this process by using the `create-react-app` boilerplate, then adding `react-router-4.0` and `redux`.
+## Reflections on the App:
 
-One of the main challenges I ran into was Authentication. This lead me to spend a few days on a research spike into OAuth, Auth0, and two-factor authentication using Firebase or other third parties. Due to project time constraints, I had to table authentication and focus more on data visualization from parts of the API that weren't restricted to authenticated users.
+- One of the challenges I had early on was the handling of the `Spotify Authentication` itself. The actual process of handling authentication for this API was new to me, and I had to spend some time reading through the Spotify docs and experimenting with different setups for URI setups/redirects etc.
+- The next set of reading I went through was with the `Ant Design` Documentation. Even though I had not used this specific UI framework before, I have used Material UI a lot in the past, and their usage is not too dissimilar from each other so it was a quick tool to grasp
+- A lot of setup time for the project was concerned with the implementation of Redux within the App, normally for most Web Apps Redux would be used fairly comprehensively for handling state / actions.  
+  However again thinking of time constraints to the project, I find that the use of Redux (being so functional in nature) with Typescript can sometimes often lead to a lot of conflicts and errors to resolve
+- To this end, I implemented it to handling the main querying of data, and not 100% use across the App
 
-At the end of the day, the technologies implemented in this project are React, React-Router 4.0, Redux, LoDash, D3, and a significant amount of VanillaJS, JSX, and CSS. I chose to use the `create-react-app` boilerplate to minimize initial setup and invest more time in diving into weird technological rabbit holes. In the next iteration I plan on handrolling a `webpack.config.js` file to more fully understand the build process.
+The technologies implemented in this project are React, Redux, React-Router 4.0, Typescript, TSX, and CSS-in-JS (styled-components).
+
+I used the `create-react-app` boilerplate to minimize initial setup.
