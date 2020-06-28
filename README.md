@@ -51,7 +51,7 @@ Builds the app for production to the `build/` folder.
   - http://localhost:5000 (for usage of `serve build/` command)
 
 - This basically means that only when using any of these base URIs, the Spotify redirect back to the search-app will be successful
-- This does cause a breaking error when using the `npm start:remote` command, as the development URI will be set to the _Network Address_ of your local machine, and the Spotify Development dashboard will not have that whitelisted
+- This does cause a breaking error when using the `npm start:remote` command and trying to authenticate on mobile, as the development URI will be set to the _Network Address_ of your local machine, and the Spotify Development dashboard will not be able to have that whitelisted
 
 <br />
 
