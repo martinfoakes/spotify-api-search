@@ -76,11 +76,22 @@ class SearchBarComp extends React.Component<SearchProps, SearchState> {
   /**
    * Remove Spinner element when request complete
    */
-  componentDidUpdate(prevProps: SearchProps) {
-    if (!prevProps.tracks.items.length && this.props.tracks.items.length) {
-      this.setState({
-        searching: false,
-      });
+  componentDidUpdate(prevProps: SearchProps, prevState: SearchState) {
+    if (!!this.state.searching) {
+      if (!prevProps.tracks.items.length && this.props.tracks.items.length) {
+        this.setState({
+          searching: false,
+          oldQuery: this.state.newQuery,
+        });
+      } else if (
+        this.state.newQuery !== prevState.oldQuery &&
+        this.props.tracks.items.length
+      ) {
+        this.setState({
+          searching: false,
+          oldQuery: this.state.newQuery,
+        });
+      }
     }
   }
 
