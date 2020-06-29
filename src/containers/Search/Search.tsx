@@ -20,12 +20,17 @@ const { Search } = Input;
 interface SearchProps {
   apiToken: string;
   searchTracks: Function;
-  tracks: [];
+  tracks: {
+    items: [];
+    total: number;
+  };
 }
 
 interface SearchState {
-  query: string;
+  newQuery: string;
+  oldQuery: string;
   searching: boolean;
+  searchError: boolean;
 }
 
 class SearchBarComp extends React.Component<SearchProps, SearchState> {
@@ -33,8 +38,10 @@ class SearchBarComp extends React.Component<SearchProps, SearchState> {
     super(props);
 
     this.state = {
-      query: '',
+      newQuery: '',
+      oldQuery: '',
       searching: false,
+      searchError: false,
     };
   }
 
@@ -42,20 +49,26 @@ class SearchBarComp extends React.Component<SearchProps, SearchState> {
    * Detect if the input field value changed, set new state
    */
   handleChange = (event: any): void => {
-    this.setState({ query: event.target.value });
+    this.setState({ newQuery: event.target.value });
   };
 
   /**
    * Query API through Redux Action
    */
   handleSubmitSearch = (value: string): void => {
+    if (value === this.state.oldQuery || value === '') {
+      return;
+    }
+
     this.setState({
       searching: true,
     });
+
     const authToken =
       this.props.apiToken === ''
         ? localStorage.getItem('apiToken')
         : this.props.apiToken;
+
     const searchQuery = value.replace(' ', '%20');
     this.props.searchTracks(searchQuery, authToken);
   };
@@ -64,7 +77,7 @@ class SearchBarComp extends React.Component<SearchProps, SearchState> {
    * Remove Spinner element when request complete
    */
   componentDidUpdate(prevProps: SearchProps) {
-    if (!prevProps.tracks.length && this.props.tracks.length) {
+    if (!prevProps.tracks.items.length && this.props.tracks.items.length) {
       this.setState({
         searching: false,
       });
@@ -75,7 +88,7 @@ class SearchBarComp extends React.Component<SearchProps, SearchState> {
    * Render List of Track Items on Data fetch
    */
   renderList(): JSX.Element[] {
-    return this.props.tracks.map((track: any) => (
+    return this.props.tracks.items.map((track: any) => (
       <TrackElement key={track.id}>
         <TrackResult
           trackId={track.id}
@@ -89,19 +102,19 @@ class SearchBarComp extends React.Component<SearchProps, SearchState> {
 
   render() {
     return (
-      <SearchContainer showTracks={!!this.props.tracks.length}>
+      <SearchContainer showTracks={!!this.props.tracks.items.length}>
         <SearchTitle>{'Search for a Song'}</SearchTitle>
         <SearchBarContainer>
           <Search
             placeholder="Enter song name"
             onChange={this.handleChange}
-            onSearch={() => this.handleSubmitSearch(this.state.query)}
+            onSearch={() => this.handleSubmitSearch(this.state.newQuery)}
             loading={this.state.searching}
             enterButton={true}
           />
         </SearchBarContainer>
         {this.state.searching && <Spin />}
-        {this.props.tracks.length > 0 && (
+        {!!this.props.tracks.items.length && (
           <TrackList>{this.renderList()}</TrackList>
         )}
       </SearchContainer>
@@ -109,7 +122,14 @@ class SearchBarComp extends React.Component<SearchProps, SearchState> {
   }
 }
 
-const mapStateToProps = ({ tracks }: ReduxStoreState): { tracks: [] } => {
+const mapStateToProps = ({
+  tracks,
+}: ReduxStoreState): {
+  tracks: {
+    items: [];
+    total: number;
+  };
+} => {
   return { tracks };
 };
 

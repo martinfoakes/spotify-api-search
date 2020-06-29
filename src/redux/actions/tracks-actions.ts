@@ -8,7 +8,10 @@ import { ActionTypes } from './types';
 
 export interface FetchTracksAction {
   type: ActionTypes.fetchTracks;
-  payload: [];
+  payload: {
+    items: [];
+    total: number;
+  };
 }
 
 export const searchTracks = (searchQuery: string, apiToken: string) => {
@@ -21,7 +24,10 @@ export const searchTracks = (searchQuery: string, apiToken: string) => {
 
     dispatch<FetchTracksAction>({
       type: ActionTypes.fetchTracks,
-      payload: response.data.tracks.items,
+      payload: {
+        items: response.data.tracks.items,
+        total: response.data.tracks.total,
+      },
     });
   };
 };
