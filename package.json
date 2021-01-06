@@ -17,7 +17,7 @@
     "@types/react-router-dom": "^5.1.5",
     "@types/styled-components": "^5.1.0",
     "antd": "^4.3.5",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "craco-less": "^1.17.0",
     "react": "^16.13.1",
     "react-awesome-reveal": "^2.4.2",
